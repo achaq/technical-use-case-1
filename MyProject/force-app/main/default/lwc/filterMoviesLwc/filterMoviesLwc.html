@@ -1,0 +1,19 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="12">
+            <lightning-card title="Find the Movie">
+                <!-- New Movie button goes here -->
+                <lightning-button label="New Movie" onclick={createNewMovie} slot="actions"></lightning-button>
+                <p class="slds-m-bottom_xx-small">
+                    <lightning-input onchange={changeword}></lightning-input>
+                    <lightning-button label="search" onclick={searchMovies} slot="actions"></lightning-button>
+                </p>
+            <c-movies-results-lwc size="12" class="slds-p-top_small slds-is-relative"></c-movies-results-lwc>
+        </lightning-card>
+
+        </lightning-layout-item>
+
+
+
+    </lightning-layout>
+</template> 

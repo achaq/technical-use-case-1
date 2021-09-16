@@ -1,0 +1,39 @@
+<template>
+    <template if:false={wiredRecord.data}>
+        <lightning-card>
+            <!-- lightning card for the label when wiredRecord has no data goes here  -->
+            <span class="slds-align_absolute-center no-boat-height">Please Select a MOVIE</span>
+        </lightning-card>
+    </template>
+    <template if:true={wiredRecord.data}>
+        <template if:false={editing}>
+                <lightning-card title={movieName}>
+                    <lightning-record-view-form record-id={movieId} object-api-name='Movie__c' density='compact'>
+                        <img src={url} key={imageSrc} style="height: 250px;width:100%">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                        <lightning-output-field field-name="Category__c"></lightning-output-field>
+                        <lightning-output-field field-name="Release_Date__c"></lightning-output-field>
+                        <lightning-output-field field-name="Description__c"></lightning-output-field>
+                        <div class="slds-m-top_medium">
+                            <lightning-button class="slds-m-top_small" label="Edit" onclick={handleEdit}></lightning-button>
+                            <lightning-button-icon icon-name="utility:delete"  onclick={deleteMovie}></lightning-button-icon>                        
+                        </div>
+                       
+                    </lightning-record-view-form>
+                </lightning-card>
+        </template>
+
+        <template if:true={editing}>
+            <lightning-record-edit-form record-id={movieId} object-api-name='Movie__c' density='compact'>
+                <img src={url} key={imageSrc} style="height: 250px;width:100%">
+                <lightning-input-field field-name="Name"></lightning-input-field>
+                <lightning-input-field field-name="Category__c"></lightning-input-field>
+                <lightning-input-field field-name="Release_Date__c"></lightning-input-field>
+                <lightning-input-field field-name="Description__c"></lightning-input-field>
+                <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}></lightning-button>
+                <lightning-button class="slds-m-top_small" type="submit" label="Save Record"></lightning-button>
+            </lightning-record-edit-form>
+        </template>
+        <!-- lightning card for the content when wiredRecord has data goes here  -->
+    </template>
+</template>
